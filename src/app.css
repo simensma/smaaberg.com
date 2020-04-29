@@ -1,5 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;600&display=swap');
+
 * {
   scroll-behavior: smooth;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+
+#root, #root > div, .content, .content > div {
+  height: 100%;
 }
 
 body {
@@ -9,6 +21,18 @@ body {
   font-size: 16px;
   margin: 0;
   padding: 0;
+  height: 100%;
+  color: white;
+}
+
+h1 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 50px;
+}
+
+h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 34px;
 }
 
 a {
@@ -32,6 +56,20 @@ nav a {
   display: inline-block;
 }
 
-.content {
-  padding: 1rem;
+
+@keyframes breath {
+  0% {
+    animation-timing-function: cubic-bezier(0.9647,0.2413,-0.0705,0.7911);
+    transform: scale(0.9099999999999999);
+  }
+
+  51% {
+    animation-timing-function: cubic-bezier(0.9226,0.2631,-0.0308,0.7628);
+    transform: scale(1.02994);
+  }
+
+  100% {
+    transform: scale(0.9099999999999999);
+  }
 }
+

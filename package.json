@@ -9,6 +9,11 @@
     "serve": "serve dist -p 3000"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-brands-svg-icons": "^5.13.0",
+    "@fortawesome/free-regular-svg-icons": "^5.13.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
     "@reach/router": "^1.2.1",
     "axios": "^0.19.0",
     "react": "^16.9.0",
@@ -16,7 +21,9 @@
     "react-static": "^7.2.0",
     "react-static-plugin-reach-router": "^7.2.0",
     "react-static-plugin-sitemap": "^7.2.0",
-    "react-static-plugin-source-filesystem": "^7.2.0"
+    "react-static-plugin-source-filesystem": "^7.2.0",
+    "styled-components": "^5.1.0",
+    "typewriter-effect": "^2.13.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
