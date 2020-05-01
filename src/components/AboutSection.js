@@ -5,6 +5,10 @@ import styled from 'styled-components';
 const Section = styled.div`
     min-height: 250px;
     display: flex;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `;
 
 const SubSection = styled.div`

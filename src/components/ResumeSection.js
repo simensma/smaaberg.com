@@ -8,6 +8,16 @@ const Section = styled.div`
     min-height: 250px;
     display: flex;
     justify-content: space-evenly;
+
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+
+    @media (max-width: 768px) {
+        align-items: center;
+    }
 `;
 
 const SubSection = styled.div`
@@ -15,12 +25,17 @@ const SubSection = styled.div`
     flex-grow: 1;
     background: rgba(0,0,0,0.25);
     max-width: 600px;
+    margin-bottom: 16px;
 
     h3 {
         background: ${Theme().lightest};
         padding: 16px 16px;
         margin-top: 0;
         margin-bottom: 16px;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
     }
 `;
 
@@ -66,7 +81,7 @@ class ResumeSection extends React.Component {
     render() {
         return (
             <Section id="resume">
-                <SubSection>
+                <SubSection style={{display: 'flex', flexDirection: 'column'}}>
                     <h3>Education</h3>
 
                     <Entry>
@@ -76,7 +91,7 @@ class ResumeSection extends React.Component {
                         <Description>Blah Blah</Description>
                     </Entry>
 
-                    <Entry>
+                    <Entry style={{flexGrow: 1}}>
                         <h4>Queensland University of Technology</h4>
                         <p>Study abroad diploma in Computer Science</p>
                         <TimeP>Jul 2012 - Jul 2013</TimeP>

@@ -16,19 +16,25 @@ import LoadingPage from 'components/LoadingPage'
 // Any routes that start with 'dynamic' will be treated as non-static routes
 addPrefetchExcludes(['dynamic'])
 
-function App() {
-  return (
-    <Root>
-      <div className="content">
-        <React.Suspense fallback={<LoadingPage></LoadingPage>}>
-          <Router>
-            <Dynamic path="dynamic" />
-            <Routes path="*" />
-          </Router>
-        </React.Suspense>
-      </div>
-    </Root>
-  )
+class App extends React.Component {
+  componentDidMount() {
+    document.title = 'Simen Smaaberg - Software Developer'
+  }
+  
+  render() {
+    return (
+      <Root>
+        <div className="content">
+          <React.Suspense fallback={<LoadingPage></LoadingPage>}>
+            <Router>
+              <Dynamic path="dynamic" />
+              <Routes path="*" />
+            </Router>
+          </React.Suspense>
+        </div>
+      </Root>
+    );
+  }
 }
 
 export default App
