@@ -45,7 +45,7 @@ class ContactForm extends React.Component {
 
     async onSubmit(values, {setSubmitting, setErrors, setStatus, resetForm}) {
         values['form-name'] = 'contact-form';
-        
+
         try {
             await axios.post('/', qs.stringify(values), {headers: {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -98,6 +98,14 @@ class ContactForm extends React.Component {
                             <Field rows={10} className={'form-control' + (errors.message? ' is-invalid': '')} component="textarea" name="message"></Field>
                             <ErrorMessage className="invalid-feedback" name="message" component="div"></ErrorMessage>
                         </div>
+
+                        {status && status.success && <div class="alert alert-success" role="alert">
+                            Message Sent!
+                        </div>}
+
+                        {status && !status.success && <div class="alert alert-danger" role="alert">
+                            Something went wrong when sending message.
+                        </div>}
 
                         <div className={'form-group ' + (errors.submit? 'has-danger': '')} style={{textAlign: 'right'}}>
                             <ErrorMessage className="invalid-feedback" name="submit" component="div"></ErrorMessage>
