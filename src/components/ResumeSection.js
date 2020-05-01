@@ -1,7 +1,5 @@
 import Theme from '../theme';
 import styled from 'styled-components';
-import { Timeline, Event } from 'react-trivial-timeline';
-
 import React from 'react';
 
 const Section = styled.div`
@@ -80,47 +78,54 @@ const Description = styled.p`
 class ResumeSection extends React.Component {
     render() {
         return (
-            <Section id="resume">
-                <SubSection style={{display: 'flex', flexDirection: 'column'}}>
-                    <h3>Education</h3>
+            <div>
+                <Section id="resume">
+                    <SubSection style={{display: 'flex', flexDirection: 'column'}}>
+                        <h3>Education</h3>
 
-                    <Entry>
-                        <h4>MSc Computer Science</h4>
-                        <p>Norwegian University of Science and Technology</p>
-                        <TimeP>Aug 2009 - Jun 2014</TimeP>
-                        <Description>Blah Blah</Description>
-                    </Entry>
+                        <Entry>
+                            <h4>MSc Computer Science</h4>
+                            <p>Norwegian University of Science and Technology</p>
+                            <TimeP>Aug 2009 - Jun 2014</TimeP>
+                            <Description>Blah Blah</Description>
+                        </Entry>
 
-                    <Entry style={{flexGrow: 1}}>
-                        <h4>Queensland University of Technology</h4>
-                        <p>Study abroad diploma in Computer Science</p>
-                        <TimeP>Jul 2012 - Jul 2013</TimeP>
-                        <Description>Blah blah</Description>
-                    </Entry>
-                </SubSection>
-                <SubSection>
-                    <h3>Experience</h3>
+                        <Entry style={{flexGrow: 1}}>
+                            <h4>Queensland University of Technology</h4>
+                            <p>Study abroad diploma in Computer Science</p>
+                            <TimeP>Jul 2012 - Jul 2013</TimeP>
+                            <Description>Blah blah</Description>
+                        </Entry>
+                    </SubSection>
+                    <SubSection>
+                        <h3>Experience</h3>
 
-                    <Entry>
-                        <h4>Senior Software Developer</h4>
-                        <p>SKIO Music</p>
-                        <TimeP>Aug 2009 - Jun 2014</TimeP>
-                        <Description>Lorem ipsum dolor sit amet</Description>
-                    </Entry>
-                    <Entry>
-                        <h4>Software Developer</h4>
-                        <p>SKIO Music</p>
-                        <TimeP>Aug 2009 - Jun 2014</TimeP>
-                        <Description>Lorem ipsum dolor sit amet</Description>
-                    </Entry>
-                    <Entry>
-                        <h4>Software Developer</h4>
-                        <p>Visma Consulting</p>
-                        <TimeP>Aug 2009 - Jun 2014</TimeP>
-                        <Description>Lorem ipsum dolor sit amet</Description>
-                    </Entry>
-                </SubSection>
-            </Section>
+                        <Entry>
+                            <h4>Senior Software Developer</h4>
+                            <p>SKIO Music</p>
+                            <TimeP>Aug 2009 - Jun 2014</TimeP>
+                            <Description>Lorem ipsum dolor sit amet</Description>
+                        </Entry>
+                        <Entry>
+                            <h4>Software Developer</h4>
+                            <p>SKIO Music</p>
+                            <TimeP>Aug 2009 - Jun 2014</TimeP>
+                            <Description>Lorem ipsum dolor sit amet</Description>
+                        </Entry>
+                        <Entry>
+                            <h4>Software Developer</h4>
+                            <p>Visma Consulting</p>
+                            <TimeP>Aug 2009 - Jun 2014</TimeP>
+                            <Description>Lorem ipsum dolor sit amet</Description>
+                        </Entry>
+                    </SubSection>
+                </Section>
+
+                <div style={{textAlign: 'center', marginTop: '32px'}}>
+                    <button className="btn btn-secondary">Request CV</button>
+                </div>
+            </div>
+
         );
     }
 }
