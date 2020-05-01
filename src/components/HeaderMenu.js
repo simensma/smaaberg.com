@@ -28,7 +28,7 @@ class HeaderMenu extends React.Component {
 
     scrollTo(e, selector) {
         e.preventDefault();
-        $('html, body').delay(0).animate({scrollTop: $(selector).offset().top }, 1000);
+        $('html, body').delay(0).animate({scrollTop: $(selector).offset().top - 100 }, 1000);
     }
 
     render() {
