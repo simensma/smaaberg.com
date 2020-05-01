@@ -14,15 +14,25 @@ const Hello = styled.span`
 `;
 
 const ImText = styled.div`
-    display: flex;
+    word-break: break-word;
+    
+    @media(min-width: 768px) {
+        display: flex;
+    }
+    
 `;
 
+const Im = styled.span`
+    @media(max-width:768px) {
+        display: block;
+    }
+`;
 
 class HeaderContent extends React.Component {
     render() {
         return (
             <CT>
-                <h1 style={{marginTop: 0}}><Hello>Hello</Hello>,<br/><ImText>I'm&nbsp;<Typewriter
+                <h1 style={{marginTop: 0}}><Hello>Hello</Hello>,<br/><ImText><Im>I'm&nbsp;</Im><Typewriter
                     options={{
                         strings: ["Simen", "a developer", "a coffee lover"],
                         autoStart: true,
@@ -33,7 +43,7 @@ class HeaderContent extends React.Component {
                     </Typewriter></ImText>
                 </h1>
 
-                <SocialIcons style={{marginBottom: '48px'}}>
+                <SocialIcons style={{marginBottom: '16px', marginTop: '48px'}}>
                 </SocialIcons>
 
                 <HeaderMenu></HeaderMenu>

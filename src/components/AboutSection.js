@@ -35,7 +35,12 @@ const PropList = styled.ul`
     }
 `;
 
-const PropListItem = styled.li``;
+const PropListItem = styled.li`
+    @media(max-width: 768px) {
+        display: inline-block;
+        padding-right: 8px;
+    }
+`;
 
 class AboutSection extends React.Component {
     render() {
