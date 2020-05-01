@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Theme from '../theme';
+import $ from 'jquery'; 
 
 const Menu = styled.div`
     display: flex;
@@ -16,21 +17,33 @@ const MenuItem = styled.div`
     padding-left: 2px;
     min-width: 70px;
     text-align: left;
+    cursor: pointer;
 `;
 
 class HeaderMenu extends React.Component {
+    constructor() {
+        super();
+        this.scrollTo = this.scrollTo.bind(this);
+    }
+
+    scrollTo(e, selector) {
+        e.preventDefault();
+        $('html, body').delay(0).animate({scrollTop: $(selector).offset().top }, 1000);
+    }
+
     render() {
-        return <Menu>
-            <MenuItem>
+        return (       
+        <Menu>
+            <MenuItem onClick={e => this.scrollTo(e, '#about')}>
                 About Me
             </MenuItem>
-            <MenuItem>
+            <MenuItem onClick={e => this.scrollTo(e, '#resume')}>
                 Resume
             </MenuItem>
-            <MenuItem>
+            <MenuItem onClick={e => this.scrollTo(e, '#hire')}>
                 Hire
             </MenuItem>
-        </Menu>;
+        </Menu>);
     }
 }
 

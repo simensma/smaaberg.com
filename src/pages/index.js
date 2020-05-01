@@ -6,6 +6,7 @@ import Theme from 'theme';
 import AboutSection from '../components/AboutSection';
 import ResumeSection from '../components/ResumeSection';
 import SectionBorder from '../components/SectionBorder';
+import ContactForm from '../components/ContactForm';
 
 const HP = styled.div`
   background-image: linear-gradient(0deg, rgba(0,0,0,0.15), rgba(0,0,0,0.75)), url('/images/smaaberg-bg.jpg');
@@ -60,6 +61,6 @@ export default () => (
       <ResumeSection style={{}}></ResumeSection>
       <SectionBorder position="bottom"></SectionBorder>
     </ImageSection>
-    <DarkSection><ResumeSection style={{}}></ResumeSection></DarkSection>
+    <DarkSection><ContactForm></ContactForm></DarkSection>
   </MainPage>
 )
