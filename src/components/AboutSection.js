@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Theme from '../theme';
 import SocialIcons from './SocialIcons';
+import ScrollTo from '../services/ScrollTo';
 
 const Section = styled.div`
     min-height: 250px;
@@ -63,7 +64,7 @@ class AboutSection extends React.Component {
                         </p>
 
                         <SocialIcons style={{marginBottom: '16px', marginTop: '32px'}}></SocialIcons>
-                        <button className="btn btn-secondary">Get in Touch</button>
+                        <button onClick={() => ScrollTo('#hire')} className="btn btn-secondary">Get in Touch</button>
 
                     </SubSection>
                     <div style={{display: 'flex'}}>

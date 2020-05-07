@@ -1,6 +1,7 @@
 import Theme from '../theme';
 import styled from 'styled-components';
 import React from 'react';
+import ScrollTo from '../services/ScrollTo';
 
 const Section = styled.div`
     min-height: 250px;
@@ -137,7 +138,7 @@ class ResumeSection extends React.Component {
                 </Section>
 
                 <div style={{textAlign: 'center', marginTop: '32px'}}>
-                    <button className="btn btn-secondary">Request Full CV</button>
+                    <button className="btn btn-secondary" onClick={() => ScrollTo('#hire')}>Request Full CV</button>
                 </div>
             </div>
 

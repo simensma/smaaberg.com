@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Theme from '../theme';
-import $ from 'jquery'; 
+import ScrollTo from '../services/ScrollTo';
 
 const Menu = styled.div`
     display: flex;
@@ -28,7 +28,7 @@ class HeaderMenu extends React.Component {
 
     scrollTo(e, selector) {
         e.preventDefault();
-        $('html, body').delay(0).animate({scrollTop: $(selector).offset().top - 100 }, 1000);
+        ScrollTo(selector);
     }
 
     render() {
