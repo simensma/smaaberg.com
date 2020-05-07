@@ -9,6 +9,7 @@ import SectionBorder from '../components/SectionBorder';
 import ContactForm from '../components/ContactForm';
 import LoadingPage from '../components/LoadingPage';
 import $ from 'jquery';
+import MetaTags from 'react-meta-tags';
 
 const BGIMG = '/images/smaaberg-bg.jpg';
 
@@ -59,6 +60,7 @@ class Page extends React.Component {
     super();
 
     this.state = {loaded: false};
+    this.content = this.content.bind(this);
   }
  
   componentDidMount() {
@@ -70,8 +72,7 @@ class Page extends React.Component {
     });
   }
 
-  render() {
-    
+  content() {
     if(this.state.loaded) {
       return (
         <MainPage>
@@ -91,6 +92,24 @@ class Page extends React.Component {
     } else {
       return <LoadingPage></LoadingPage>
     }
+  }
+
+  render() {
+    // const MetaTags = styled.div``;
+    return <div style={{height: '100%'}}><MetaTags>
+      <title>Simen Fivelstad Smaaberg - Software Developer</title>
+      <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="description" content="Simen Fivelstad Smaaberg's home page. I'm a Full-Stack software developer available for freelance and full-time work. Get in touch!" />
+      <meta property="og:title" content="Simen Fivelstad Smaaberg - Software Developer" />
+      <meta property="og:image" content="images/avatar.png" />
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <meta name="application-name" content="Simen Fivelstad Smaaberg - Hire"/>
+
+     
+    </MetaTags>
+    {this.content()}
+    </div>
+
   }
 }
 

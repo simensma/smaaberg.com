@@ -18,7 +18,7 @@ addPrefetchExcludes(['dynamic'])
 
 class App extends React.Component {
   componentDidMount() {
-    document.title = 'Simen Smaaberg - Software Developer'
+    document.title = 'Simen Fivelstad Smaaberg - Software Developer'
   }
   
   render() {
