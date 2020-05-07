@@ -3,23 +3,10 @@ import axios from 'axios'
 
 export default {
   getRoutes: async () => {
-    const { data: posts } = await axios.get(
-      'https://jsonplaceholder.typicode.com/posts'
-    )
 
     return [
       {
-        path: '/blog',
-        getData: () => ({
-          posts,
-        }),
-        children: posts.map(post => ({
-          path: `/post/${post.id}`,
-          template: 'src/containers/Post',
-          getData: () => ({
-            post,
-          }),
-        })),
+        path: '/resume',
       },
     ]
   },
@@ -32,5 +19,12 @@ export default {
     ],
     require.resolve('react-static-plugin-reach-router'),
     require.resolve('react-static-plugin-sitemap'),
+    [
+      'react-static-plugin-favicons',
+      { 
+
+        outputDir: path.join(__dirname, 'dist'),
+        inputFile: path.resolve(__dirname, './src/icon.png') },
+    ],
   ],
 }

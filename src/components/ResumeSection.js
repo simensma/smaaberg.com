@@ -72,7 +72,7 @@ const TimeP = styled.p`
 `;
 
 const Description = styled.p`
-    color: #666;
+    color: #999;
 `;
 
 class ResumeSection extends React.Component {
@@ -84,17 +84,26 @@ class ResumeSection extends React.Component {
                         <h3>Education</h3>
 
                         <Entry>
-                            <h4>MSc Computer Science</h4>
+                            <h4>MSc in Computer Science</h4>
                             <p>Norwegian University of Science and Technology</p>
                             <TimeP>Aug 2009 - Jun 2014</TimeP>
-                            <Description>Blah Blah</Description>
+                            <Description>
+                                <ul>
+                                    <li>Field: Software Development and Information Systems</li>
+                                    <li>Thesis Published at the “1st International Workshop on Social Personalisation“ at ACM Hypertext 2015</li>
+                                </ul>
+                            </Description>
                         </Entry>
 
                         <Entry style={{flexGrow: 1}}>
                             <h4>Queensland University of Technology</h4>
-                            <p>Study abroad diploma in Computer Science</p>
+                            <p>Study Abroad Diploma in Computer Science</p>
                             <TimeP>Jul 2012 - Jul 2013</TimeP>
-                            <Description>Blah blah</Description>
+                            <Description>
+                                <ul>
+                                    <li>One year of postgraduate studies as part of my master’s degree</li>
+                                </ul>
+                            </Description>
                         </Entry>
                     </SubSection>
                     <SubSection>
@@ -103,26 +112,32 @@ class ResumeSection extends React.Component {
                         <Entry>
                             <h4>Senior Software Developer</h4>
                             <p>SKIO Music</p>
-                            <TimeP>Aug 2009 - Jun 2014</TimeP>
-                            <Description>Lorem ipsum dolor sit amet</Description>
-                        </Entry>
-                        <Entry>
-                            <h4>Software Developer</h4>
-                            <p>SKIO Music</p>
-                            <TimeP>Aug 2009 - Jun 2014</TimeP>
-                            <Description>Lorem ipsum dolor sit amet</Description>
+                            <TimeP style={{marginBottom: 0}}>Senior Software Developer: Apr 2018 - Feb 2020</TimeP>
+                            <TimeP>Full-Stack Software Developer: Aug 2015 - Apr 2018</TimeP>
+                            <Description>
+                                <ul>
+                                    <li>Co-lead of the tech team of a music collaboration and licensing platform in a period of 100x user base growth</li>
+                                    <li>Development of services using Python (Django), Java (Spring Boot), and AngularJS</li>
+                                </ul>
+                            </Description>
                         </Entry>
                         <Entry>
                             <h4>Software Developer</h4>
                             <p>Visma Consulting</p>
-                            <TimeP>Aug 2009 - Jun 2014</TimeP>
-                            <Description>Lorem ipsum dolor sit amet</Description>
+                            <TimeP>Aug 2014 - Aug 2015</TimeP>
+                            <Description>
+                                <ul>
+                                    <li>Map-based iOS app in Swift for locating charging stations and paying for charging of electric cars</li>
+                                    <li>Hybrid app (iOS/Android) for booking accommodation with the Norwegian Trekking Association</li>
+                                    <li>Developed and tested reusable templates used for automated correspondence with Norwegian tax-payers by the Norwegian Labour and Welfare Administration, using JavaScript and HP Exstream</li>
+                                </ul>
+                            </Description>
                         </Entry>
                     </SubSection>
                 </Section>
 
                 <div style={{textAlign: 'center', marginTop: '32px'}}>
-                    <button className="btn btn-secondary">Request CV</button>
+                    <button className="btn btn-secondary">Request Full CV</button>
                 </div>
             </div>
 

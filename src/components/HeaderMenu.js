@@ -35,7 +35,7 @@ class HeaderMenu extends React.Component {
         return (       
         <Menu>
             <MenuItem onClick={e => this.scrollTo(e, '#about')}>
-                About Me
+                About
             </MenuItem>
             <MenuItem onClick={e => this.scrollTo(e, '#resume')}>
                 Resume

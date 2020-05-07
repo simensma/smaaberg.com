@@ -4,7 +4,8 @@ const DefaultTheme = () => ({
     neutral: '#c5c6c7',
     light: '#66fcf1',
     lightest: '#45a29e',
-    lightestMed: '#45a22c'
+    lightestMed: '#45a22c',
+    blueish: '#31599b'
 });
 
 const BlueTheme = () => ({

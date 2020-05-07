@@ -27,6 +27,7 @@ const SubSection = styled.div`
 const PropList = styled.ul`
     list-style: none;
     padding:0;
+    margin-right: 16px;
 
     li {
         color: ${Theme().neutral};
@@ -37,7 +38,6 @@ const PropList = styled.ul`
 
 const PropListItem = styled.li`
     @media(max-width: 768px) {
-        display: inline-block;
         padding-right: 8px;
     }
 `;
@@ -48,27 +48,65 @@ class AboutSection extends React.Component {
             <AboutSectionWrapper>
                 <Section id="about">
                     <SubSection>
-                        <h2 style={{maxWidth: '350px'}}>
-                            <span style={{color: Theme().lightest}}>Developer</span>, Coffee, Hiking
+                        <h1 style={{maxWidth: '550px'}}>
+                            <span style={{color: Theme().lightest}}>Hi.</span>
+                        </h1>
+                        <p style={{maxWidth: '550px'}}>
+                            I'm a full-stack Software Developer based in Victoria, BC, with experience in a wide range of technologies.
+                        </p>
+                        <h2 style={{maxWidth: '550px', marginTop: '32px'}}>
+                            <span style={{color: Theme().lightest}}>I can help.</span>
                         </h2>
-                        <p style={{maxWidth: '500px'}}>
-                            With experience from a wide range of projects, I can provide assistance with whatever you can think of.
+                        <h5>Currently available for freelancing and full-time work</h5>
+                        <p style={{maxWidth: '550px'}}>
+                            If you have have a project you want to get started, need help with something, or just want to chat, then get in touch!
                         </p>
 
                         <SocialIcons style={{marginBottom: '16px', marginTop: '32px'}}></SocialIcons>
-                        <button className="btn btn-secondary">Hire Me</button>
+                        <button className="btn btn-secondary">Get in Touch</button>
 
                     </SubSection>
-                    <SubSection>
-                        <PropList>
-                            <PropListItem>Development</PropListItem>
-                            <PropListItem>Python</PropListItem>
-                            <PropListItem>Java</PropListItem>
-                            <PropListItem>AngularJS</PropListItem>
-                            <PropListItem>React</PropListItem>
-                            <PropListItem>WordPress</PropListItem>
-                        </PropList>
-                    </SubSection>
+                    <div style={{display: 'flex'}}>
+                        <SubSection>
+                            <PropList>
+                                <PropListItem style={{fontWeight: 600}}>Services</PropListItem>
+                                <PropListItem>Full Time Work</PropListItem>
+                                <PropListItem>Contracting</PropListItem>
+                                <PropListItem>Freelancing</PropListItem>
+                                <PropListItem>Web</PropListItem>
+                                <PropListItem>Mobile</PropListItem>
+                                <PropListItem>Frontend</PropListItem>
+                                <PropListItem>Backend</PropListItem>
+                                <PropListItem>Devops</PropListItem>
+                                <PropListItem>Full-Stack</PropListItem>
+                            </PropList>
+                        </SubSection>
+                        <SubSection>
+                            <PropList>
+                                <PropListItem style={{fontWeight: 600}}>Languages</PropListItem>
+                                <PropListItem>Python</PropListItem>
+                                <PropListItem>Java</PropListItem>
+                                <PropListItem>JavaScript</PropListItem>
+                                <PropListItem>Swift</PropListItem>
+                                <PropListItem>PHP</PropListItem>
+                                <PropListItem>C++</PropListItem>
+                            </PropList>
+                        </SubSection>
+                        <SubSection>
+                            <PropList>
+                                <PropListItem style={{fontWeight: 600}}>Other</PropListItem>
+                                <PropListItem>AngularJS</PropListItem>
+                                <PropListItem>Django</PropListItem>
+                                <PropListItem>Spring Boot</PropListItem>
+                                <PropListItem>HTML, CSS + SASS</PropListItem>
+                                <PropListItem>AWS Services</PropListItem>
+                                <PropListItem>React</PropListItem>
+                                <PropListItem>SQL</PropListItem>
+                                <PropListItem>JQuery</PropListItem>
+                                <PropListItem>WordPress</PropListItem>
+                            </PropList>
+                        </SubSection>
+                    </div>
                 </Section>
             </AboutSectionWrapper>
         );

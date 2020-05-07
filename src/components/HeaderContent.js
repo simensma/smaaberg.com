@@ -32,9 +32,10 @@ class HeaderContent extends React.Component {
     render() {
         return (
             <CT>
+                {/* <img style={{width: '100px', marginBottom: '32px'}} src="/images/avatar.png"/> */}
                 <h1 style={{marginTop: 0}}><Hello>Hello</Hello>,<br/><ImText><Im>I'm&nbsp;</Im><Typewriter
                     options={{
-                        strings: ["Simen", "a developer", "a coffee lover"],
+                        strings: ["Simen", "a developer"],
                         autoStart: true,
                         loop: true,
                         deleteSpeed: 500,
