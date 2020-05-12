@@ -72,7 +72,7 @@ const TimeP = styled.p`
     color: ${Theme().lightest};
 `;
 
-const Description = styled.p`
+const Description = styled.div`
     color: #999;
 `;
 

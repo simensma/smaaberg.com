@@ -58,6 +58,14 @@ const HPCSS = (webpSupport) => styled.div`
   position: relative;
 `;
 
+const LoadingSection = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+`;
+
 
 
 class Page extends React.Component {
@@ -65,7 +73,7 @@ class Page extends React.Component {
   constructor() {
     super();
 
-    this.state = {loaded: false, webpSupport: this.canUseWebp()};
+    this.state = {loaded: false, webpSupport: false};
     this.content = this.content.bind(this);
   }
  
@@ -81,21 +89,28 @@ class Page extends React.Component {
 
   componentDidMount() {
     const self = this;
-    $('<img/>').attr('src', withImgExt(this.state.webpSupport, BGIMG)).on('load', function() {
-      $(this).remove();
 
+    let canUseWebp = this.canUseWebp();
+
+    this.setState({webpSupport: canUseWebp, loadedWebp: true});
+
+
+    $('<img/>').attr('src', withImgExt(canUseWebp, BGIMG)).on('load', function() {
       self.setState({loaded: true});
     });
   }
 
   content() {
-    const HP = HPCSS(this.state.webpSupport);
-    const ImageSection = ImageSectionCSS(this.state.webpSupport);
-
-    if(this.state.loaded) {
+    if(this.state.loadedWebp) {
+      const HP = HPCSS(this.state.webpSupport);
+      const ImageSection = ImageSectionCSS(this.state.webpSupport);
+    
       return (
         <MainPage>
           <HP>
+            {!this.state.loaded && (<LoadingSection>
+              <LoadingPage></LoadingPage>
+            </LoadingSection>)}
             <SectionBorder position="bottom"></SectionBorder>
             <HeaderSection><HeaderContent></HeaderContent></HeaderSection>
           </HP>
@@ -114,6 +129,7 @@ class Page extends React.Component {
   }
 
   render() {
+    // return this.content();
     // const MetaTags = styled.div``;
     return <div style={{height: '100%'}}><MetaTags>
       <title>Simen Fivelstad Smaaberg - Software Developer</title>
