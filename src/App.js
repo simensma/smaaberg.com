@@ -7,11 +7,10 @@ import { Link, Router } from 'components/Router'
 import Dynamic from 'containers/Dynamic'
 
 import './app.css'
+import ReactGA from 'react-ga';
 
 
 import LoadingPage from 'components/LoadingPage'
-
-
 
 // Any routes that start with 'dynamic' will be treated as non-static routes
 addPrefetchExcludes(['dynamic'])
@@ -19,6 +18,8 @@ addPrefetchExcludes(['dynamic'])
 class App extends React.Component {
   componentDidMount() {
     document.title = 'Simen Fivelstad Smaaberg - Software Developer'
+    ReactGA.initialize('UA-166313409-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }
   
   render() {
