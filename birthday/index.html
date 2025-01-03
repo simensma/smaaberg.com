@@ -7,6 +7,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
     />
+    
     <style>
       * {
         padding: 0;
@@ -76,7 +77,7 @@
       }
       .back-side {
         transform: rotateY(180deg);
-        background: linear-gradient(to left, #e7e7e7, #ffffff 30%), url('https://via.placeholder.com/320x400') no-repeat center center;
+        background: url('./pic.jpg') no-repeat center center;
         background-size: cover;
       }
       .cake {
@@ -172,6 +173,24 @@
       .button-container button:hover {
         background-color: #e7e7e7;
       }
+            /* Add these styles to your existing CSS */
+            .arrow-button {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+        background: none;
+        border: none;
+        color: #000046;
+        cursor: pointer;
+        padding: 10px;
+        transition: transform 0.3s;
+      }
+      
+      .arrow-button:hover {
+        transform: translateX(5px);
+      }
+
     </style>
   </head>
   <body>
@@ -191,18 +210,28 @@
       </div>
       <div class="inner-content">
         <div class="slide active">
-          <p>Wishing you a very happy birthday filled with love and laughter</p>
+          <p>Happy Birthday!!!</p>
           <h1>🎁</h1>
           <div class="button-container">
-            <button onclick="nextSlide()">Next</button>
+            <button class="arrow-button" onclick="nextSlide()">Next</button>
           </div>
         </div>
         <div class="slide">
-          <p>May your day be as special as you are!</p>
+          <p>Slide 2!</p>
+          <h1>🎉</h1>
+          <div class="button-container">
+            <button class="arrow-button" onclick="nextSlide()">Next</button>
+          </div>
+        </div>
+        <div class="slide">
+          <p>Slide 3!</p>
           <h1>🎉</h1>
         </div>
       </div>
     </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
 
     <script>
       let currentSlide = 0;
@@ -212,6 +241,71 @@
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
         slides[currentSlide].classList.add('active');
+      }
+
+      // Create and append modal HTML
+      const modal = document.createElement('div');
+      modal.innerHTML = `
+        <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,1);backdrop-filter:blur(5px);z-index:99"></div>
+        <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:5px;text-align:center;z-index:100">
+          <p>Ready?</p>
+          <button onclick="enableSound()" style="background-color: #4CAF50; color: white; padding: 10px 20px; margin: 10px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Start</button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      // Create SVG container for fireworks
+      const svg = d3.select('body')
+        .append('svg')
+        .style('position', 'fixed')
+        .style('top', '0')
+        .style('left', '0')
+        .style('width', '100%')
+        .style('height', '100%')
+        .style('pointer-events', 'none')
+        .style('z-index', '98');
+
+      function createFirework() {
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight;
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'];
+
+        for (let i = 0; i < 30; i++) {
+          const angle = (i / 30) * Math.PI * 2;
+          const velocity = 5;
+          const particle = svg.append('circle')
+            .attr('cx', x)
+            .attr('cy', y)
+            .attr('r', 3)
+            .style('fill', colors[Math.floor(Math.random() * colors.length)]);
+
+          particle.transition()
+            .duration(1000)
+            .ease(d3.easeLinear)
+            .attr('cx', x + Math.cos(angle) * 100)
+            .attr('cy', y + Math.sin(angle) * 100)
+            .style('opacity', 0)
+            .remove();
+        }
+      }
+
+      const originalNextSlide = nextSlide;
+      nextSlide = function() {
+        originalNextSlide();
+        if (currentSlide === slides.length - 1) {
+          setInterval(createFirework, 500);
+        }
+      };
+
+      function enableSound() {
+        const audio = new Audio('./panda_birthday.mp3');
+
+        audio.play();
+        closeModal();
+      }
+
+      function closeModal() {
+        modal.remove();
       }
     </script>
   </body>
