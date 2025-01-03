@@ -9,38 +9,18 @@
     <style>
     @media screen and (max-width: 1024px) {
       .card {
-        width: 90%;
-        height: 300px;
       }
       .inner-content h1 {
         font-size: 60px;
         line-height: 60px;
       }
       .cake {
-        transform: scale(0.7);
       }
       .outside p {
         /* font-size: 18px; */
       }
     }
 
-    @media screen and (max-width: 480px) {
-      .card {
-        width: 95%;
-        height: 250px;
-      }
-      .inner-content h1 {
-        font-size: 40px;
-        line-height: 40px;
-      }
-      .cake {
-        transform: scale(0.5);
-      }
-      .outside p {
-        font-size: 16px;
-        letter-spacing: 3px;
-      }
-    }
     </style>
     <style>
       * {
@@ -54,7 +34,7 @@
       }
       .card {
         max-width: 1023px;
-        width: 100%;
+        width: calc(100vw - 50px);
         height: 520px;
         position: absolute;
         margin: auto;
@@ -340,6 +320,7 @@
         .style('pointer-events', 'none')
         .style('z-index', '98');
         
+        
 
         function createFirework() {
         const x = Math.random() * window.innerWidth;
@@ -396,12 +377,12 @@
           const row = document.createElement('div');
           row.style.display = 'flex';
           row.style.justifyContent = 'center';
-          row.style.gap = '5px';
-          row.style.margin = '5px';
+          row.style.gap = '2px';
+          row.style.margin = '2px';
           for (let j = 0; j < 5; j++) {
             const cell = document.createElement('div');
-            cell.style.width = '40px';
-            cell.style.height = '40px';
+            cell.style.width = '60px';
+            cell.style.height = '60px';
             cell.style.border = '2px solid #ccc';
             cell.style.display = 'flex';
             cell.style.alignItems = 'center';
