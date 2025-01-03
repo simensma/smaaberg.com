@@ -9,7 +9,7 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
       .card {
         width: 90%;
         height: 300px;
@@ -165,6 +165,13 @@
         right: 0;
         bottom: 202px;
       }
+      @keyframes flicker {
+        0%, 100% { transform: rotate(44deg) translateY(0); }
+        25% { transform: rotate(46deg) translateY(-1px); }
+        50% { transform: rotate(44deg) translateY(1px); }
+        75% { transform: rotate(46deg) translateY(-1px); }
+      }
+
       .candle:before {
         content: "";
         position: absolute;
@@ -173,7 +180,7 @@
         background-color: #ffa500;
         border-radius: 0 50% 50% 50%;
         bottom: 48px;
-        transform: rotate(45deg);
+        animation: flicker 0.5s infinite;
         left: -1px;
       }
       .outside p {
@@ -240,7 +247,7 @@
             <div class="cake-middle"></div>
             <div class="cake-bottom"></div>
             <div class="candle"></div>
-            <p style="font-size: 12px; color: #ccc">(Hover to Open)</p>
+            <p style="font-size: 12px; color: #ccc">(Click to Open)</p>
           </div>
         </div>
         <div class="back-side"></div>
