@@ -410,16 +410,16 @@
         const enterButton = document.createElement('button');
         enterButton.textContent = 'Enter';
         enterButton.style.margin = '2px';
-        button.style.width = w;
-          button.style.height = h;
+        enterButton.style.width = w;
+          enterButton.style.height = h;
         enterButton.addEventListener('click', checkGuess);
         keyboard.appendChild(enterButton);
 
         const backspaceButton = document.createElement('button');
         backspaceButton.textContent = 'Del';
         backspaceButton.style.margin = '2px';
-        button.style.width = w;
-          button.style.height = h;
+        backspaceButton.style.width = w;
+          backspaceButton.style.height = h;
         backspaceButton.addEventListener('click', () => {
           currentGuess = currentGuess.slice(0, -1);
           updateGrid();
