@@ -229,9 +229,10 @@
           </div>
         </div>
         <div class="slide">
-          <p style="line-height: 25px;">To the best panda there is. Welcome to 34!! May the next year be filled with climbs and good food.
-            Can't wait to celebrate in person when I get back.<br><br></p>
-          <h1>🎉</h1>
+          <!-- <p style="line-height: 25px;">To the best panda there is. Welcome to 34!! May the next year be filled with climbs and good food.
+            Can't wait to celebrate in person when I get back.<br><br></p> -->
+          <p style="line-height: 25px;">TEST TEST<br><br></p>
+            <h1>🎉</h1>
           <div class="button-container">
             <button class="arrow-button" onclick="nextSlide()">Next</button>
           </div>
@@ -433,13 +434,19 @@
         if (!gameActive || currentGuess.length >= 5) return;
         currentGuess += letter;
         updateGrid();
+        
       }
 
+      let debounceTimer;
+
       function updateGrid() {
-        const cells = grid.children[attempts].children;
-        for (let i = 0; i < 5; i++) {
-          cells[i].textContent = currentGuess[i] || '';
-        }
+        if (debounceTimer) clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          const cells = grid.children[attempts].children;
+          for (let i = 0; i < 5; i++) {
+            cells[i].textContent = currentGuess[i] || '';
+          }
+        }, 10);
       }
 
       document.addEventListener('keydown', (e) => {
@@ -448,7 +455,7 @@
           checkGuess();
         } else if (e.key === 'Backspace') {
           currentGuess = currentGuess.slice(0, -1);
-          updateGrid();
+          requestAnimationFrame(() => updateGrid());
         } else if (/^[A-Za-z]$/.test(e.key) && currentGuess.length < 5) {
           handleGuess(e.key.toUpperCase());
         }
