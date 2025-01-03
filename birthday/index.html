@@ -272,6 +272,16 @@
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
         slides[currentSlide].classList.add('active');
+
+        if(currentSlide === 2) {
+          addWordle();
+
+          if(window.innerWidth < 1500) {
+            document.body.style.zoom = '250%';
+            window.scrollTo(document.body.scrollWidth, 0);
+          }
+        }
+        
       }
 
       function previousSlide() {
@@ -418,7 +428,6 @@
       const targetWord = 'PANDA';
       let gameActive = true;
 
-      addWordle();
 
 
       // Create keyboard
