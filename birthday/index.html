@@ -55,8 +55,8 @@
         background-color: #0d0d0d;
       }
       .card {
-        width: 640px;
-        height: 400px;
+        width: 720px;
+        height: 520px;
         position: absolute;
         margin: auto;
         left: 0;
@@ -119,7 +119,7 @@
       .cake {
         width: 100%;
         position: absolute;
-        bottom: 30px;
+        top: 180px;
       }
       .cake-top,
       .cake-middle,
@@ -214,11 +214,16 @@
         border-radius: 5px;
         transition: background-color 0.3s;
       }
+      #success,#fail
+      {
+        line-height: 25px;
+        display: none;
+      }
       .button-container button:hover {
         background-color: #e7e7e7;
       }
             /* Add these styles to your existing CSS */
-            .arrow-button {
+      .arrow-button {
         position: absolute;
         bottom: 20px;
         right: 20px;
@@ -261,15 +266,34 @@
           </div>
         </div>
         <div class="slide">
-          <p>Slide 2!</p>
+          <p style="line-height: 25px;">To the best panda there is. Welcome to 34!! May the next year be filled with climbs and good food.
+            Can't wait to celebrate in person when I get back.<br><br></p>
           <h1>🎉</h1>
           <div class="button-container">
             <button class="arrow-button" onclick="nextSlide()">Next</button>
           </div>
         </div>
         <div class="slide">
-          <p>Slide 3!</p>
+          <p>Can you guess the word?</p>
+          <div id="wordle-grid"></div>
+          <div id="keyboard"></div>
+        </div>
+        <div class="slide">
           <h1>🎉</h1>
+          <p id="success" style="text-align: center;">
+            <br>
+            WohooO! The word was PANDA! 🐼 You got it in <span id="tries"></span>.
+            <br>
+            <br>
+            A 🎁 is waiting for you in the office closet.<br/><br><br>
+            We're also going to Janevca for dinner tomorrow night (7pm) unless our jetlag says otherwise.
+          </p>
+          <p id="fail" style="text-align: center;">
+            Game Over!
+            🐳
+            I guess you can try again.
+            <br/>
+            <button onclick="previousSlide()">Try Again</button>
         </div>
       </div>
     </div>
@@ -285,6 +309,13 @@
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
         slides[currentSlide].classList.add('active');
+      }
+
+      function previousSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        addWordle();
       }
 
       // Create and append modal HTML
@@ -309,8 +340,9 @@
         .style('height', '100%')
         .style('pointer-events', 'none')
         .style('z-index', '98');
+        
 
-      function createFirework() {
+        function createFirework() {
         const x = Math.random() * window.innerWidth;
         const y = Math.random() * window.innerHeight;
         const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'];
@@ -342,6 +374,8 @@
         }
       };
 
+      const grid = document.getElementById('wordle-grid');
+
       function enableSound() {
         const audio = new Audio('./panda_birthday.mp3');
 
@@ -351,6 +385,133 @@
 
       function closeModal() {
         modal.remove();
+      }
+
+      function addWordle() {
+              // Create grid
+        
+        const grid = document.getElementById('wordle-grid');
+        grid.innerHTML = '';
+
+        for (let i = 0; i < maxAttempts; i++) {
+          const row = document.createElement('div');
+          row.style.display = 'flex';
+          row.style.justifyContent = 'center';
+          row.style.gap = '5px';
+          row.style.margin = '5px';
+          for (let j = 0; j < 5; j++) {
+            const cell = document.createElement('div');
+            cell.style.width = '40px';
+            cell.style.height = '40px';
+            cell.style.border = '2px solid #ccc';
+            cell.style.display = 'flex';
+            cell.style.alignItems = 'center';
+            cell.style.justifyContent = 'center';
+            row.appendChild(cell);
+          }
+          grid.appendChild(row);
+        }
+
+        const keyboard = document.getElementById('keyboard');
+
+        keyboard.innerHTML = '';
+        const keys = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split('');
+        keys.forEach(key => {
+          const button = document.createElement('button');
+          button.textContent = key;
+          button.style.margin = '2px';
+          button.style.padding = '5px 7px';
+          button.addEventListener('click', () => handleGuess(key));
+          keyboard.appendChild(button);
+        });
+
+        const enterButton = document.createElement('button');
+        enterButton.textContent = 'Enter';
+        enterButton.style.margin = '2px';
+        enterButton.style.padding = '5px 7px';
+        enterButton.addEventListener('click', checkGuess);
+        keyboard.appendChild(enterButton);
+
+        const backspaceButton = document.createElement('button');
+        backspaceButton.textContent = 'Del';
+        backspaceButton.style.margin = '2px';
+        backspaceButton.style.padding = '5px 7px';
+        backspaceButton.addEventListener('click', () => {
+          currentGuess = currentGuess.slice(0, -1);
+          updateGrid();
+        });
+        keyboard.appendChild(backspaceButton);
+
+      }
+
+      // Wordle game implementation
+      let attempts = 0;
+      const maxAttempts = 6;
+      const targetWord = 'PANDA';
+      let gameActive = true;
+
+      addWordle();
+
+
+      // Create keyboard
+
+      let currentGuess = '';
+
+      function handleGuess(letter) {
+        if (!gameActive || currentGuess.length >= 5) return;
+        currentGuess += letter;
+        updateGrid();
+      }
+
+      function updateGrid() {
+        const cells = grid.children[attempts].children;
+        for (let i = 0; i < 5; i++) {
+          cells[i].textContent = currentGuess[i] || '';
+        }
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (!gameActive) return;
+        if (e.key === 'Enter' && currentGuess.length === 5) {
+          checkGuess();
+        } else if (e.key === 'Backspace') {
+          currentGuess = currentGuess.slice(0, -1);
+          updateGrid();
+        } else if (/^[A-Za-z]$/.test(e.key) && currentGuess.length < 5) {
+          handleGuess(e.key.toUpperCase());
+        }
+      });
+
+      function checkGuess() {
+        const cells = grid.children[attempts].children;
+        for (let i = 0; i < 5; i++) {
+          if (currentGuess[i] === targetWord[i]) {
+            cells[i].style.backgroundColor = '#6aaa64';
+          } else if (targetWord.includes(currentGuess[i])) {
+            cells[i].style.backgroundColor = '#c9b458';
+          } else {
+            cells[i].style.backgroundColor = '#787c7e';
+          }
+          cells[i].style.color = 'white';
+        }
+
+        if (currentGuess === targetWord) {
+          gameActive = false;
+          document.getElementById('success').style.display = 'block';
+          document.getElementById('fail').style.display = 'none';
+
+          nextSlide();
+          createFirework();
+          document.getElementById('tries').innerHTML = (attempts + 1) + ' ' + (attempts === 0 ? ' try' : ' tries');
+        } else if (attempts === maxAttempts - 1) {
+          gameActive = false;
+          nextSlide();
+          document.getElementById('success').style.display = 'none';
+          document.getElementById('fail').style.display = 'block';
+        }
+
+        attempts++;
+        currentGuess = '';
       }
     </script>
   </body>
